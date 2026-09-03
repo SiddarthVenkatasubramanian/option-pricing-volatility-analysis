@@ -1,0 +1,25 @@
+# Point-in-time market data -- downloaded fresh before each run, never
+# committed (see README's Input data format section)
+tcs_stock_data.csv
+option_chain_data.csv
+
+# Generated every run (report, charts, sensitivity CSV -- land inside a
+# per-run outputs/<timestamp>/ subfolder, which stays ignored). run_history.csv
+# lives directly in outputs/, one level up from those subfolders, and is
+# committed on purpose -- it's the real cumulative log, not a generated
+# artifact. A blanket "outputs/" rule here would also ignore that file with
+# no way to un-ignore it (git can't re-include a file once a parent
+# directory is excluded), so this only matches the timestamped subfolders.
+outputs/*/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+venv/
+.venv/
+
+# Editor/OS noise
+.vscode/
+.idea/
+.DS_Store
